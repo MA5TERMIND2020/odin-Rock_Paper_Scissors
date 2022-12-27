@@ -1,3 +1,7 @@
+const rock_div = document.getElementById("r");
+const paper_div = document.getElementById("p");
+const scissors_div = document.getElementById("s");
+
 //Create an array called choices that contains the three options that a player can choose from.
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -13,7 +17,15 @@ function getComputerChoice() {
  can choose from it will be accepted. Otherwise, it will keep asking the user for their selection*/
 
 function getPlayerChoice() {
-    let validatedInput = false;
+    let choice;
+    while (choice === undefined) {
+    rock_div.addEventListener('click', () => {choice = "rock"});
+    if (choice = "rock") {
+    return choice;
+    }
+    else {continue};
+    }
+    /*let validatedInput = false;
     while(validatedInput == false) {
         const choice = prompt("Please make your selection. You can choose either Rock, Paper, or Scissors.");
         if (choice == null) {
@@ -24,7 +36,7 @@ function getPlayerChoice() {
             validatedInput = true;
             return choiceInLower;
         }
-    }
+    }*/
 }
 
 /*Create a function that will greet the user with a "Welcome!" message, then allow the user to play five rounds against the computer before finally
@@ -69,4 +81,4 @@ function game() {
     }
 }
 
-//game()
+game()
