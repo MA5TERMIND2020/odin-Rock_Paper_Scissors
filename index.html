@@ -8,7 +8,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Hello Friend</h1>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+    </header>
+
+    <div class="scoreboard">
+        <div id="user-label" class="badge">User</div>
+        <div id="computer-label" class="badge">Computer</div>
+        <span id="user-score">0</span>:<span id="computer-score-score">0</span>
+    </div>
+
+    <div class="result">
+        <p>Paper beats Rock. You Win!</p>
+    </div>
+
+    <div class="choices">
+        <div id="r" class="choice">
+            <img src="images/rock.png" alt="Rock">
+        </div>
+        <div id="p" class="choice">
+            <img src="images/paper.png" alt="Paper">
+        </div>
+        <div id="s" class="choice">
+            <img src="images/scissors.png" alt="Scissors">
+        </div>
+    </div>
+
+    <p id="action-message">Make Your Move.</p>
 </body>
 <script src="js/main.js"></script>
 </html>
