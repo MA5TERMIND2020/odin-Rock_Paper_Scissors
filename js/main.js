@@ -82,16 +82,19 @@ function game(userChoice) {
 
 function resetGame() {
     if (gamesPlayed == 5) {
-        setTimeout(function(scorePlayer, scoreComputer) {
-            scorePlayer > scoreComputer ? result_div.textContent = "Game Over. Player Wins!"
-            : scorePlayer === scoreComputer ? result_div.textContent = "Game Over. It Was a Tie."
-            : result_div.textContent = "Game Over. Compunter Wins!"
-        }, 1);
+        setTimeout(checkGame() , 1);
     }
     scorePlayer = 0;
     scoreComputer = 0;
     gamesPlayed = 0;
     userScore_span.textContent = 0;
     computerScore_span.textContent = 0;
-    result_div.textContent = "Let's Play";
+    result_div.textContent = resetText;
+}
+let resetText = "Let's Play"
+
+function checkGame() {
+    scorePlayer > scoreComputer ? resetText = "Game Over. Player Wins!"
+    : scorePlayer === scoreComputer ? resetText = "Game Over. It Was a Tie."
+    : resetText = "Game Over. Compunter Wins!"
 }
