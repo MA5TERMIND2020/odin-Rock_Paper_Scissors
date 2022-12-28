@@ -51,9 +51,9 @@ function win(userChoice, computerChoice) {
     userScore_span.textContent = ++scorePlayer;
     result_div.textContent = `You Win! ${userChoice} Beats ${computerChoice}`;
     if (++gamesPlayed == 5) {resetGame()};
-    console.log(gamesPlayed);
-    console.log(userChoice);
-    console.log(computerChoice);
+        console.log(gamesPlayed);
+        console.log(userChoice);
+        console.log(computerChoice);
 }
 
 function lose(userChoice, computerChoice) {
@@ -61,18 +61,18 @@ function lose(userChoice, computerChoice) {
     result_div.textContent = `You Lose. ${computerChoice} Beats ${userChoice}`;
     //++gamesPlayed;
     if (++gamesPlayed == 5) {resetGame()};
-    console.log(gamesPlayed);
-    console.log(userChoice);
-    console.log(computerChoice);
+        console.log(gamesPlayed);
+        console.log(userChoice);
+        console.log(computerChoice);
 }
 
 function tie(userChoice, computerChoice) {
     result_div.textContent = "It's a Tie.";
     //++gamesPlayed
     if (++gamesPlayed == 5) {resetGame()};
-    console.log(gamesPlayed);
-    console.log(userChoice);
-    console.log(computerChoice);
+        console.log(gamesPlayed);
+        console.log(userChoice);
+        console.log(computerChoice);
 }
 
 /*Create the Game() function.
@@ -100,21 +100,21 @@ function resetGame() {
     if (gamesPlayed == 5) {
         checkGame();
         scorePlayer = 0;
-    scoreComputer = 0;
-    gamesPlayed = 0;
-    result_div.textContent = resetText;
-    reset_div.textContent = "Play Again?";
-    rock_div.removeEventListener('click', gameRock);
-    paper_div.removeEventListener('click', gamePaper);
-    scissors_div.removeEventListener('click', gameScissors);
+        scoreComputer = 0;
+        gamesPlayed = 0;
+        result_div.textContent = resetText;
+        reset_div.textContent = "Play Again?";
+        rock_div.removeEventListener('click', gameRock);
+        paper_div.removeEventListener('click', gamePaper);
+        scissors_div.removeEventListener('click', gameScissors);
     }
     else {
-    scorePlayer = 0;
-    scoreComputer = 0;
-    gamesPlayed = 0;
-    userScore_span.textContent = 0;
-    computerScore_span.textContent = 0;
-    result_div.textContent = "Let's Play";
+        scorePlayer = 0;
+        scoreComputer = 0;
+        gamesPlayed = 0;
+        userScore_span.textContent = 0;
+        computerScore_span.textContent = 0;
+        result_div.textContent = "Let's Play";
     }
 }
 let resetText = "Let's Play"
