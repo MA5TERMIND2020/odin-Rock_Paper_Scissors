@@ -20,17 +20,17 @@ const reset_div = document.querySelector(".reset-game");
 // Add Event Listeners to the DOM nodes that I want to perform some action on once they are clicked.
 rock_div.addEventListener('click', () => { 
     if (gamesPlayed !== 5) {
-        gameRock;
+        gameRock();
     }
 });
 paper_div.addEventListener('click', () => { 
     if (gamesPlayed !== 5) {
-        gamePaper;
+        gamePaper();
     }
 });
 scissors_div.addEventListener('click', () => { 
     if (gamesPlayed !== 5) {
-        gameScissors;
+        gameScissors();
     }
 });
 reset_div.addEventListener('click', () => {
