@@ -1,8 +1,8 @@
-//Create variables to keep track of the Score and Games Played.
+//Create variables to keep track of the Score, Games Played, and if the Game is Over.
 let scorePlayer = 0;
 let scoreComputer = 0;
 let gamesPlayed = 0;
-
+let gameOver = false;
 
 //Create an array called choices that contains the three options that a player can choose from.
 const choices = ['Rock', 'Paper', 'Scissors'];
@@ -19,37 +19,23 @@ const reset_div = document.querySelector(".reset-game");
 
 // Add Event Listeners to the DOM nodes that I want to perform some action on once they are clicked.
 rock_div.addEventListener('click', () => { 
-    if (gamesPlayed !== 5) {
-        gameRock();
+    if (gameOver == false) {
+        game('Rock');
     }
 });
 paper_div.addEventListener('click', () => { 
-    if (gamesPlayed !== 5) {
-        gamePaper();
+    if (gameOver == false) {
+        game('Paper');
     }
 });
 scissors_div.addEventListener('click', () => { 
-    if (gamesPlayed !== 5) {
-        gameScissors();
+    if (gameOver == false) {
+        game('Scissors');
     }
 });
 reset_div.addEventListener('click', () => {
     resetGame();
 });
-
-
-function gameRock() {
-    game('Rock');
-}
-
-function gamePaper() {
-    game('Paper');
-}
-
-function gameScissors() {
-    game('Scissors');
-}
-
 
 //Create a function that will randomly select the computers choice from the array of choices.
 
@@ -71,7 +57,6 @@ function win(userChoice, computerChoice) {
 function lose(userChoice, computerChoice) {
     computerScore_span.textContent = ++scoreComputer
     result_div.textContent = `You Lose. ${computerChoice} Beats ${userChoice}`;
-    //++gamesPlayed;
     if (++gamesPlayed == 5) {resetGame()};
         console.log(gamesPlayed);
         console.log(userChoice);
@@ -80,7 +65,6 @@ function lose(userChoice, computerChoice) {
 
 function tie(userChoice, computerChoice) {
     result_div.textContent = "It's a Tie.";
-    //++gamesPlayed
     if (++gamesPlayed == 5) {resetGame()};
         console.log(gamesPlayed);
         console.log(userChoice);
@@ -111,16 +95,15 @@ function game(userChoice) {
 function resetGame() {
     if (gamesPlayed == 5) {
         checkGame();
+        gameOver = true;
         scorePlayer = 0;
         scoreComputer = 0;
         gamesPlayed = 0;
         result_div.textContent = resetText;
         reset_div.textContent = "Play Again?";
-        //rock_div.removeEventListener('click', gameRock);
-        //paper_div.removeEventListener('click', gamePaper);
-        //scissors_div.removeEventListener('click', gameScissors);
     }
     else {
+        gameOver = false;
         scorePlayer = 0;
         scoreComputer = 0;
         gamesPlayed = 0;
