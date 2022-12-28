@@ -109,5 +109,5 @@ let resetText = "Let's Play"
 function checkGame() {
     scorePlayer > scoreComputer ? resetText = "Game Over. Player Wins!"
     : scorePlayer === scoreComputer ? resetText = "Game Over. It Was a Tie."
-    : resetText = "Game Over. Compunter Wins!"
+    : resetText = "Game Over. Computer Wins!"
 }
