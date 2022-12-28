@@ -1,4 +1,4 @@
-//Create variables to keep track of the score
+//Create variables to keep track of the Score and Games Played.
 let scorePlayer = 0;
 let scoreComputer = 0;
 let gamesPlayed = 0;
@@ -7,7 +7,7 @@ let gamesPlayed = 0;
 //Create an array called choices that contains the three options that a player can choose from.
 const choices = ['Rock', 'Paper', 'Scissors'];
 
-
+//Create references to all of the DOM nodes I will be needing
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
 const scoreBoard_div = document.querySelector(".scoreboard");
@@ -17,7 +17,7 @@ const paper_div = document.getElementById("Paper");
 const scissors_div = document.getElementById("Scissors");
 const reset_div = document.querySelector(".reset-game");
 
-//Event Listeners
+// Add Event Listeners to the DOM nodes that I want to perform some action on once they are clicked.
 rock_div.addEventListener('click', () => {
     game('Rock');
 });
@@ -40,6 +40,7 @@ function getComputerChoice() {
     return choice;
 }
 
+//Create functions for the actions to be taken depending on if the player won, lost, or there was a tie after running the Game() function.
 function win(userChoice, computerChoice) {
     userScore_span.textContent = ++scorePlayer;
     result_div.textContent = `You Win! ${userChoice} Beats ${computerChoice}`;
@@ -68,6 +69,8 @@ function tie(userChoice, computerChoice) {
     console.log(computerChoice);
 }
 
+/*Create the Game() function.
+ It will take the Users choice and perform some logic on it to determine if the player won, lost, or it was a tie.*/
 function game(userChoice) {
     let computerChoice = getComputerChoice();
     switch (userChoice + computerChoice) {
@@ -86,6 +89,7 @@ function game(userChoice) {
     }
 }
 
+//Create the resetGame() function.
 function resetGame() {
     if (gamesPlayed == 5) {
         checkGame();
