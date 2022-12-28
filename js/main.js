@@ -43,7 +43,7 @@ function getComputerChoice() {
 function win(userChoice, computerChoice) {
     userScore_span.textContent = ++scorePlayer;
     result_div.textContent = `You Win! ${userChoice} Beats ${computerChoice}`;
-    if (++gamesPlayed == 5) {resetGame(userChoice, computerChoice)};
+    if (++gamesPlayed == 5) {resetGame()};
     console.log(gamesPlayed);
 }
 
@@ -51,14 +51,14 @@ function lose(userChoice, computerChoice) {
     computerScore_span.textContent = ++scoreComputer
     result_div.textContent = `You Lose. ${computerChoice} Beats ${userChoice}`;
     //++gamesPlayed;
-    if (++gamesPlayed == 5) {resetGame(userChoice, computerChoice)};
+    if (++gamesPlayed == 5) {resetGame()};
     console.log(gamesPlayed);
 }
 
 function tie(userChoice, computerChoice) {
     result_div.textContent = "It's a Tie.";
     //++gamesPlayed
-    if (++gamesPlayed == 5) {resetGame(userChoice, computerChoice)};
+    if (++gamesPlayed == 5) {resetGame()};
     console.log(gamesPlayed);
 }
 
@@ -80,7 +80,7 @@ function game(userChoice) {
     }
 }
 
-function resetGame(scorePlayer, scoreComputer) {
+function resetGame() {
     if (gamesPlayed == 5) {
         setTimeout(function(scorePlayer, scoreComputer) {
             scorePlayer > scoreComputer ? result_div.textContent = "Game Over. Player Wins!"
