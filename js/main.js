@@ -1,84 +1,97 @@
-const rock_div = document.getElementById("r");
-const paper_div = document.getElementById("p");
-const scissors_div = document.getElementById("s");
+//Create variables to keep track of the score
+let scorePlayer = 0;
+let scoreComputer = 0;
+let gamesPlayed = 0;
+
 
 //Create an array called choices that contains the three options that a player can choose from.
-const choices = ['rock', 'paper', 'scissors'];
+const choices = ['Rock', 'Paper', 'Scissors'];
+
+
+const userScore_span = document.getElementById("user-score");
+const computerScore_span = document.getElementById("computer-score");
+const scoreBoard_div = document.querySelector(".scoreboard");
+const result_div = document.querySelector(".result");
+const rock_div = document.getElementById("Rock");
+const paper_div = document.getElementById("Paper");
+const scissors_div = document.getElementById("Scissors");
+const reset_div = document.querySelector(".reset-game");
+
+//Event Listeners
+rock_div.addEventListener('click', () => {
+    game('Rock');
+});
+paper_div.addEventListener('click', () => {
+    game('Paper');
+});
+scissors_div.addEventListener('click', () => {
+    game('Scissors');
+});
+reset_div.addEventListener('click', () => {
+    resetGame(gamesPlayed);
+});
+
+
 
 //Create a function that will randomly select the computers choice from the array of choices.
 
 function getComputerChoice() {
-    const computerChoice = choices[Math.floor(Math.random(choices) * 3)];
-    return computerChoice
-}
-
-/*Create a function that will get the selection of the player. It will perform input validation
- so that as long as the input is a case-insensitive match for one of the options that a player
- can choose from it will be accepted. Otherwise, it will keep asking the user for their selection*/
-
-function getPlayerChoice() {
-    let choice;
-    while (choice === undefined) {
-    rock_div.addEventListener('click', () => {choice = "rock"});
-    if (choice = "rock") {
+    const choice = choices[Math.floor(Math.random() * 3)];
     return choice;
-    }
-    else {continue};
-    }
-    /*let validatedInput = false;
-    while(validatedInput == false) {
-        const choice = prompt("Please make your selection. You can choose either Rock, Paper, or Scissors.");
-        if (choice == null) {
-            continue;
-        }
-        const choiceInLower = choice.toLowerCase();
-        if (choices.includes(choiceInLower)) {
-            validatedInput = true;
-            return choiceInLower;
-        }
-    }*/
 }
 
-/*Create a function that will greet the user with a "Welcome!" message, then allow the user to play five rounds against the computer before finally
- ending the game with a message saying "Game Over".*/
+function win(userChoice, computerChoice) {
+    userScore_span.textContent = ++scorePlayer;
+    result_div.textContent = `You Win! ${userChoice} Beats ${computerChoice}`;
+    if (++gamesPlayed == 5) {resetGame(userChoice, computerChoice)};
+    console.log(gamesPlayed);
+}
 
-function game() {
-    let scorePlayer = 0;
-    let scoreComputer = 0;
-    console.log("Welcome!")
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        function playRound(playerSelection, computerSelection) {
-            if(playerSelection == computerSelection) {
-                console.log("It's a Tie");
-            }
-            else if(
-                (playerSelection == "rock" && computerSelection == "scissors") ||
-                (playerSelection == "paper" && computerSelection == "rock") ||
-                (playerSelection == "scissors" && computerSelection == "paper")
-            ) {
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-                scorePlayer++;
-            }
-            else {
-                console.log(`You Lose. ${computerSelection} beats ${playerSelection}`);
-                scoreComputer++
-            }
-        }
-        playRound(playerSelection, computerSelection)
-        console.log("*********************************");
-    }
-    console.log("Game Over");
-    if(scorePlayer > scoreComputer) {
-        console.log(`YOU WON!!! The score was ${scorePlayer} to ${scoreComputer}.`);
-    }
-    else if(scorePlayer == scoreComputer) {
-        console.log(`IT WAS A TIE. The score was ${scorePlayer} to ${scoreComputer}.`);
-    }
-    else {
-        console.log(`THE COMPUTER WON. The score was ${scorePlayer} to ${scoreComputer}.`);
+function lose(userChoice, computerChoice) {
+    computerScore_span.textContent = ++scoreComputer
+    result_div.textContent = `You Lose. ${computerChoice} Beats ${userChoice}`;
+    //++gamesPlayed;
+    if (++gamesPlayed == 5) {resetGame(userChoice, computerChoice)};
+    console.log(gamesPlayed);
+}
+
+function tie(userChoice, computerChoice) {
+    result_div.textContent = "It's a Tie.";
+    //++gamesPlayed
+    if (++gamesPlayed == 5) {resetGame(userChoice, computerChoice)};
+    console.log(gamesPlayed);
+}
+
+function game(userChoice) {
+    let computerChoice = getComputerChoice();
+    switch (userChoice + computerChoice) {
+        case "RockScissors":
+        case "paperrock":
+        case "ScissorsPaper":
+            win(userChoice, computerChoice);
+            break;
+        case "RockPaper":
+        case "PaperScissors":
+        case "ScissorsRock":
+            lose(userChoice, computerChoice);
+            break;
+        default:
+            tie(userChoice, computerChoice);  
     }
 }
 
-game()
+function resetGame(scorePlayer, scoreComputer) {
+    if (gamesPlayed == 5) {
+        setTimeout(function(scorePlayer, scoreComputer) {
+            scorePlayer > scoreComputer ? result_div.textContent = "Game Over. Player Wins!"
+            : scorePlayer === scoreComputer ? result_div.textContent = "Game Over. It Was a Tie."
+            : result_div.textContent = "Game Over. Compunter Wins!"
+        }, 1);
+    }
+    scorePlayer = 0;
+    scoreComputer = 0;
+    gamesPlayed = 0;
+    userScore_span.textContent = 0;
+    computerScore_span.textContent = 0;
+    result_div.textContent = "Let's Play";
+}

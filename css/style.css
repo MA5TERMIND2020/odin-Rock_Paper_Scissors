@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /*background-color: black;*/
     color: white;
 }
 
@@ -22,11 +21,11 @@ background: black;
 .scoreboard {
     position: relative;
     margin: 20px auto;
-    border: 3px solid white;
+    border: 3px solid aquamarine;
     border-radius: 6px;
     text-align: center;
     width: 200px;
-    color: white;
+    color: aquamarine;
     font-size: 50px;
     padding: 15px 20px;
 }
@@ -54,9 +53,6 @@ background: black;
     margin-bottom: 20px;
     font-size: 40px;
     color: white;
-}
-
-.result > p {
     text-align: center;
     font-weight: bold;
 }
@@ -82,11 +78,15 @@ background: black;
     border-color: aquamarine;
 }
 
-#action-message {
+.reset-game {
     margin-top: 20px;
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    
+    color: red;
+}
 
+.reset-game:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
