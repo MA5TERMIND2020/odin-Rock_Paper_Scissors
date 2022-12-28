@@ -28,7 +28,7 @@ scissors_div.addEventListener('click', () => {
     game('Scissors');
 });
 reset_div.addEventListener('click', () => {
-    resetGame(gamesPlayed);
+    resetGame();
 });
 
 
@@ -45,6 +45,8 @@ function win(userChoice, computerChoice) {
     result_div.textContent = `You Win! ${userChoice} Beats ${computerChoice}`;
     if (++gamesPlayed == 5) {resetGame()};
     console.log(gamesPlayed);
+    console.log(userChoice);
+    console.log(computerChoice);
 }
 
 function lose(userChoice, computerChoice) {
@@ -53,6 +55,8 @@ function lose(userChoice, computerChoice) {
     //++gamesPlayed;
     if (++gamesPlayed == 5) {resetGame()};
     console.log(gamesPlayed);
+    console.log(userChoice);
+    console.log(computerChoice);
 }
 
 function tie(userChoice, computerChoice) {
@@ -60,6 +64,8 @@ function tie(userChoice, computerChoice) {
     //++gamesPlayed
     if (++gamesPlayed == 5) {resetGame()};
     console.log(gamesPlayed);
+    console.log(userChoice);
+    console.log(computerChoice);
 }
 
 function game(userChoice) {
@@ -82,14 +88,21 @@ function game(userChoice) {
 
 function resetGame() {
     if (gamesPlayed == 5) {
-        setTimeout(checkGame() , 1);
+        checkGame();
+        scorePlayer = 0;
+    scoreComputer = 0;
+    gamesPlayed = 0;
+    result_div.textContent = resetText;
+    reset_div.textContent = "Play Again?";
     }
+    else {
     scorePlayer = 0;
     scoreComputer = 0;
     gamesPlayed = 0;
     userScore_span.textContent = 0;
     computerScore_span.textContent = 0;
-    result_div.textContent = resetText;
+    result_div.textContent = "Let's Play";
+    }
 }
 let resetText = "Let's Play"
 
