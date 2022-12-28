@@ -18,9 +18,21 @@ const scissors_div = document.getElementById("Scissors");
 const reset_div = document.querySelector(".reset-game");
 
 // Add Event Listeners to the DOM nodes that I want to perform some action on once they are clicked.
-rock_div.addEventListener('click', gameRock);
-paper_div.addEventListener('click', gamePaper);
-scissors_div.addEventListener('click', gameScissors);
+rock_div.addEventListener('click', () => { 
+    if (gamesPlayed !== 5) {
+        gameRock;
+    }
+});
+paper_div.addEventListener('click', () => { 
+    if (gamesPlayed !== 5) {
+        gamePaper;
+    }
+});
+scissors_div.addEventListener('click', () => { 
+    if (gamesPlayed !== 5) {
+        gameScissors;
+    }
+});
 reset_div.addEventListener('click', () => {
     resetGame();
 });
@@ -104,9 +116,9 @@ function resetGame() {
         gamesPlayed = 0;
         result_div.textContent = resetText;
         reset_div.textContent = "Play Again?";
-        rock_div.removeEventListener('click', gameRock);
-        paper_div.removeEventListener('click', gamePaper);
-        scissors_div.removeEventListener('click', gameScissors);
+        //rock_div.removeEventListener('click', gameRock);
+        //paper_div.removeEventListener('click', gamePaper);
+        //scissors_div.removeEventListener('click', gameScissors);
     }
     else {
         scorePlayer = 0;
